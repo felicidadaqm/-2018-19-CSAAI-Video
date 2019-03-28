@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Video 02</title>
+    <script src="video.js"></script>
+  </head>
+  <body onload="main();">
+
+    <p>Prueba de video</p>
+    <video id="video1" autoplay loop muted></video>
+    <video id="video2" autoplay loop muted></video>
+    <video id="video3" autoplay loop muted></video>
+    <br>
+    <button type="button" id="play1">VER VIDEO1</button>
+    <button type="button" id="play2">VER VIDEO2</button>
+    <button type="button" id="play3">VER VIDEO3</button>
+
+    <br>
+    <b>Loop video en reproducción</b>
+    <input type="radio" name="option" value="sí" checked> Sí
+    <input type="radio" name="option" value="no"> No<br>
+    <br><br><br>
+
+    <div id="video">
+      <p> Now watching. . .</p>
+      <video id="videog" autoplay loop muted controls></video>
+      <p id=tiemposegundos></p>
+      <p> Tiempo de visualizado:</p>
+      <p id="tiempo"></p>
+    </div>
+  </body>
+</html>
