@@ -46,6 +46,33 @@ function main()
     document.getElementById("tiempo").innerHTML = hora(videog.currentTime);
     },true);
 
+  video1.onmouseover = () => {
+    console.log("Mouse over!!")
+    video1.muted = false;
+  }
+
+  video1.onmouseout = () => {
+    video1.muted = true;
+  }
+
+  video2.onmouseover = () => {
+    console.log("Mouse over2!!")
+    video2.muted = false;
+  }
+
+  video2.onmouseout = () => {
+    video2.muted = true;
+  }
+
+  video3.onmouseover = () => {
+    console.log("Mouse over3!!")
+    video3.muted = false;
+  }
+
+  video3.onmouseout = () => {
+    video3.muted = true;
+  }
+
   //-- Al apretar el boton de ver video
   ver1.onclick = () => {
     console.log("Ver!")
@@ -57,10 +84,6 @@ function main()
     if (loop == "no") {
       console.log("probando")
       videog.loop = false;
-    }
-    video1.onmouseover = () => {
-      console.log("Mouse over!!")
-      video1.muted = false;
     }
   }
 
@@ -74,11 +97,6 @@ function main()
     if (loop == "no") {
       console.log("probando")
       videog.loop = false;
-    }
-
-    video2.onmouseover = () => {
-      console.log("Mouse over2!!")
-      video2.muted = false;
     }
   }
 
@@ -94,9 +112,5 @@ function main()
       videog.loop = false;
     }
 
-    video3.onmouseover = () => {
-      console.log("Mouse over3!!")
-      video3.muted = false;
-    }
   }
 }
