@@ -19,7 +19,7 @@ function main()
   video3.height = 100;
 
   videog.width = 500;
-  videog.height = 400;
+  videog.height = 300;
 
   //-- Boton de Play
   ver1 = document.getElementById('play1')
@@ -29,6 +29,10 @@ function main()
   video1.src ="https://gsyc.urjc.es/jmplaza/csaai/realizador-fuente1.mp4"
   video2.src ="https://gsyc.urjc.es/jmplaza/csaai/realizador-fuente2.mp4"
   video3.src ="https://gsyc.urjc.es/jmplaza/csaai/realizador-fuente3.mp4"
+
+  rep_time1 = video1.currentTime;
+  rep_time2 = video2.currentTime;
+  rep_time3 = video3.currentTime;
 
 
   function hora(segundos){
@@ -42,8 +46,9 @@ function main()
   }
 
   videog.addEventListener("timeupdate",function(ev){
-    //document.getElementById("tiemposegundos").innerHTML = videog.currentTime;
-    document.getElementById("tiempo").innerHTML = hora(videog.currentTime);
+    rep_time1 = video1.currentTime;
+    rep_time2 = video2.currentTime;
+    rep_time3 = video3.currentTime;
     },true);
 
   video1.onmouseover = () => {
@@ -73,44 +78,34 @@ function main()
     video3.muted = true;
   }
 
-  //-- Al apretar el boton de ver video
-  ver1.onclick = () => {
-    console.log("Ver!")
-    //-- Indicar la fuente del vídeo
-    alert("now watching: video 1")
-    videog.src ="https://gsyc.urjc.es/jmplaza/csaai/realizador-fuente1.mp4"
+  function whenclick(url, video, time) {
+    document.getElementById("actual").innerHTML = "Now watching . . . " + video;
+    videog.src = url;
+    videog.currentTime = time;
+
+    videog.addEventListener("timeupdate",function(ev){
+      document.getElementById("tiempo").innerHTML = hora(videog.currentTime);
+      },true);
 
     var loop = document.querySelector('input[name="option"]:checked').value;
     if (loop == "no") {
-      console.log("probando")
       videog.loop = false;
     }
+  }
+
+  //-- Al apretar el boton de ver video
+  ver1.onclick = () => {
+    video = "video 1"
+    whenclick(video1.src, video, rep_time1);
   }
 
   ver2.onclick = () => {
-    console.log("Ver2")
-
-    alert("now watching: video 2")
-    videog.src ="https://gsyc.urjc.es/jmplaza/csaai/realizador-fuente2.mp4"
-
-    var loop = document.querySelector('input[name="option"]:checked').value;
-    if (loop == "no") {
-      console.log("probando")
-      videog.loop = false;
-    }
+    video = "video 2"
+    whenclick(video2.src, video, rep_time2);
   }
 
   ver3.onclick = () => {
-    console.log("Ver3")
-
-    alert("now watching: video 3")
-    video3.src ="https://gsyc.urjc.es/jmplaza/csaai/realizador-fuente3.mp4"
-
-    var loop = document.querySelector('input[name="option"]:checked').value;
-    if (loop == "no") {
-      console.log("probando")
-      videog.loop = false;
-    }
-
+    video = "video 3"
+    whenclick(video3.src, video, rep_time3);
   }
 }
